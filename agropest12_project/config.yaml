@@ -1,0 +1,33 @@
+
+dataset:
+  train_images: "data/train/images"
+  train_labels: "data/train/labels"   # yolo txt per image
+  val_images:   "data/val/images"
+  val_labels:   "data/val/labels"
+  test_images:  "data/test/images"
+  test_labels:  "data/test/labels"
+  classes: 12
+
+training:
+  seed: 42
+  # detection
+  det:
+    epochs: 10
+    batch_size: 2
+    lr: 1e-4
+    weight_decay: 1e-4
+  # classification
+  cls:
+    epochs: 5
+    batch_size: 32
+    lr: 1e-4
+    weight_decay: 1e-4
+
+model:
+  detector: "rtdetr"       # rtdetr | retinanet
+  classifier: "vit_b16"
+  num_queries: 100
+
+output:
+  save_dir: "checkpoints"
+  log_dir: "logs"
