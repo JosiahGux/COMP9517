@@ -1,19 +1,26 @@
 
+#dataset:
+ # train_images: "COMP9517/agropest12_projec/archive/train/images"
+  #train_labels: "COMP9517/agropest12_projec/archive/train/labels"   # yolo txt per image
+  #val_images:   "COMP9517/agropest12_projec/archive/val/images"
+  #val_labels:   "COMP9517/agropest12_projec/archive/val/labels"
+  #test_images:  "COMP9517/agropest12_projec/archive/test/images"
+  #test_labels:  "COMP9517/agropest12_projec/archive/test/labels"
+  #classes: 12
 dataset:
-  train_images: "archive/train/images"
-  train_labels: "archive/train/labels"   # yolo txt per image
-  val_images:   "archive/val/images"
-  val_labels:   "archive/val/labels"
-  test_images:  "archive/test/images"
-  test_labels:  "archive/test/labels"
+  train_images: /workspace/COMP9517/agropest12_project/archive/train/images
+  train_labels: /workspace/COMP9517/agropest12_project/archive/train/labels
+  val_images:   /workspace/COMP9517/agropest12_project/archive/val/images
+  val_labels:   /workspace/COMP9517/agropest12_project/archive/val/labels
+  test_images: /workspace/COMP9517/agropest12_projec/archive/test/images
+  test_labels: /workspace/COMP9517/agropest12_projec/archive/test/labels
   classes: 12
-
 training:
   seed: 42
   # detection
   det:
     epochs: 20
-    batch_size: 32
+    batch_size: 2
     lr: 1e-4
     weight_decay: 1e-4
   # classification
