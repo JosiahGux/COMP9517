@@ -1,7 +1,7 @@
 
 import argparse, yaml, os
 from PIL import Image
-from src.utils.datasets import DetectionDataset
+from agropest12_project.model.utils.datasets import DetectionDataset
 
 def save_crop(img_path, box, out_path, size=224):
     img = Image.open(img_path).convert('RGB')

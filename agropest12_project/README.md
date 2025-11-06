@@ -18,20 +18,20 @@ pip install -r requirements.txt
 vim config.yaml  # set dataset paths etc.
 
 # 3) Train detectors
-python src/detection/train_rtdetr.py --config config.yaml
-python src/detection/train_retinanet.py --config config.yaml
+python model/detection/train_rtdetr.py --config config.yaml
+python model/detection/train_retinanet.py --config config.yaml
 
 # 4) Prepare crops and train classifier (Pipeline A)
-python src/pipelines/prepare_crops_from_gt.py --config config.yaml
-python src/classifier/train_vit.py --config config.yaml
+python model/pipelines/prepare_crops_from_gt.py --config config.yaml
+python model/classifier/train_vit.py --config config.yaml
 
 # 5) Inference
-python src/pipelines/infer_pipelineA.py --config config.yaml --image examples/sample.jpg
-python src/pipelines/infer_retinanet.py --config config.yaml --image examples/sample.jpg
+python model/pipelines/infer_pipelineA.py --config config.yaml --image examples/sample.jpg
+python model/pipelines/infer_retinanet.py --config config.yaml --image examples/sample.jpg
 
 # 6) Evaluate
-python src/utils/eval_detection.py --config config.yaml --pipeline retinanet
-python src/utils/eval_classification.py --config config.yaml
+python model/utils/eval_detection.py --config config.yaml --pipeline retinanet
+python model/utils/eval_classification.py --config config.yaml
 ```
 
 ## Layout

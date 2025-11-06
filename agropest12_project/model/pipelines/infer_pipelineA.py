@@ -2,8 +2,8 @@
 import argparse, yaml, torch, os
 import torchvision.transforms as T
 from PIL import Image
-from src.detection.rtdetr_model import ToyRTDETR
-from src.classifier.vit_model import ViTClassifier
+from agropest12_project.model.detection.rtdetr_model import ToyRTDETR
+from agropest12_project.model.classifier.vit_model import ViTClassifier
 
 def crop_and_prepare(img, box, size=224):
     W,H = img.size

@@ -3,8 +3,8 @@ import argparse, yaml, torch, numpy as np
 from torch.utils.data import DataLoader
 from sklearn.metrics import roc_auc_score
 import torchvision.transforms as T
-from src.utils.datasets import ClassificationDataset
-from src.classifier.vit_model import ViTClassifier
+from agropest12_project.model.utils.datasets import ClassificationDataset
+from agropest12_project.model.classifier.vit_model import ViTClassifier
 
 def evaluate(cfg):
     ds = ClassificationDataset("crops/val")

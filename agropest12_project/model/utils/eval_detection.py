@@ -2,8 +2,8 @@
 import argparse, yaml, os, torch
 from torchvision.models.detection import retinanet_resnet50_fpn, RetinaNet_ResNet50_FPN_Weights
 from torch.utils.data import DataLoader
-from src.utils.datasets import DetectionDataset
-from src.utils.metrics import iou, voc_map
+from agropest12_project.model.utils.datasets import DetectionDataset
+from agropest12_project.model.utils.metrics import iou, voc_map
 from tqdm import tqdm
 
 def eval_retinanet(cfg):

@@ -3,8 +3,8 @@ import argparse, yaml, os, torch
 from torch.utils.data import DataLoader
 from torchvision.models.detection import retinanet_resnet50_fpn, RetinaNet_ResNet50_FPN_Weights
 from tqdm import tqdm
-from src.utils.seed import set_seed
-from src.utils.datasets import DetectionDataset
+from agropest12_project.model.utils.seed import set_seed
+from agropest12_project.model.utils.datasets import DetectionDataset
 
 def main(cfg):
     set_seed(cfg["training"]["seed"])

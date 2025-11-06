@@ -12,7 +12,7 @@ training:
   seed: 42
   # detection
   det:
-    epochs: 500
+    epochs: 20
     batch_size: 32
     lr: 1e-4
     weight_decay: 1e-4
