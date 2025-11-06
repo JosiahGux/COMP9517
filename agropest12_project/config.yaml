@@ -1,19 +1,19 @@
 
 dataset:
-  train_images: "data/train/images"
-  train_labels: "data/train/labels"   # yolo txt per image
-  val_images:   "data/val/images"
-  val_labels:   "data/val/labels"
-  test_images:  "data/test/images"
-  test_labels:  "data/test/labels"
+  train_images: "archive/train/images"
+  train_labels: "archive/train/labels"   # yolo txt per image
+  val_images:   "archive/val/images"
+  val_labels:   "archive/val/labels"
+  test_images:  "archive/test/images"
+  test_labels:  "archive/test/labels"
   classes: 12
 
 training:
   seed: 42
   # detection
   det:
-    epochs: 10
-    batch_size: 2
+    epochs: 500
+    batch_size: 32
     lr: 1e-4
     weight_decay: 1e-4
   # classification
