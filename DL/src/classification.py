@@ -7,6 +7,7 @@ from torchvision import models
 import cv2
 
 def train_classifier(train_dataset, val_dataset, num_classes, device, batch_size=32, epochs=20):
+
     """
     训练ResNet50分类模型。
     参数:
@@ -19,6 +20,7 @@ def train_classifier(train_dataset, val_dataset, num_classes, device, batch_size
     返回:
         model: 训练后的分类模型 (已加载最佳权重)。
     """
+
     # 数据加载器
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=2)
     val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=batch_size, shuffle=False, num_workers=2)

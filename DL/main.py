@@ -13,19 +13,20 @@ CLASS_NAMES = ["Ants", "Bees", "Beetles", "Caterpillars", "Earthworms",
                "Earwigs", "Grasshoppers", "Moths", "Slugs", "Snails", "Wasps", "Weevils"]  # 12类害虫名称
 NUM_CLASSES = len(CLASS_NAMES)
 # 训练参数配置
-EPOCHS_DETECTOR = 50       # 检测器训练轮数
+EPOCHS_DETECTOR = 100       # 检测器训练轮数
 EPOCHS_CLASSIFIER = 50     # 分类器训练轮数
 BATCH_SIZE = 32            # 分类模型训练的批次大小
 IMG_SIZE = 224             # 分类器输入图像大小
-YOLO_MODEL = "yolov8n.pt"  # YOLOv8预训练模型权重 (可选用yolov8s.pt等)
+#YOLO_MODEL = "yolov8n.pt"  # YOLOv8预训练模型权重 (可选用yolov8s.pt等)
+YOLO_MODEL = "yolov8m.pt"
 # 路径配置
 DETECT_RUN_NAME = "detect"  # YOLO训练输出文件夹名称
-DETECT_RUN_DIR = os.path.join("runs", DETECT_RUN_NAME)
+DETECT_RUN_DIR = os.path.join("result/runs", DETECT_RUN_NAME)
 DET_BEST_WEIGHTS = os.path.join(DETECT_RUN_DIR, "weights", "best.pt")
-CLS_BEST_WEIGHTS = os.path.join("runs", "classifier", "best.pth")
+CLS_BEST_WEIGHTS = os.path.join("result/runs", "classifier", "best.pth")
 
 # 创建输出目录
-os.makedirs("runs", exist_ok=True)
+os.makedirs("result/runs", exist_ok=True)
 
 # 解析命令行参数
 parser = argparse.ArgumentParser(description="Insect Detection and Classification Pipeline")
@@ -77,8 +78,8 @@ elif args.task == 'train_all':
     for img_path in all_images[:5]:
         run_images.append(img_path)
     if run_images:
-        os.makedirs("runs/inference", exist_ok=True)
-        classification.inference_on_images(det_model, cls_model, run_images, device=device, save_dir="runs/inference")
+        os.makedirs("result/runs/inference", exist_ok=True)
+        classification.inference_on_images(det_model, cls_model, run_images, device=device, save_dir="result/runs/inference")
     print("完整流程(train_all)执行完毕。")
 elif args.task == 'inference':
     # 推理：加载已训练的模型权重并对指定图像或示例图像进行预测
@@ -101,8 +102,8 @@ elif args.task == 'inference':
             print("未找到可用于推理的图像。")
             exit(1)
     # 执行推理并保存结果图像
-    os.makedirs("runs/inference", exist_ok=True)
-    classification.inference_on_images(det_model, cls_model, images, device=device, save_dir="runs/inference")
+    os.makedirs("result/runs/inference", exist_ok=True)
+    classification.inference_on_images(det_model, cls_model, images, device=device, save_dir="result/runs/inference")
     print(f"推理完成，结果保存在 runs/inference/ 目录。")
 elif args.task == 'evaluate':
     # 评估：计算检测模型的mAP和分类模型的准确率

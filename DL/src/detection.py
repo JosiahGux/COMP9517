@@ -35,7 +35,7 @@ def train_detector(data_dir, class_names, model_name="yolov8n.pt", epochs=50):
     # 加载YOLO模型（如果提供.pt则加载预训练权重，否则.yml则从头开始训练）
     model = YOLO(model_name)
     # 开始训练
-    results = model.train(data=data_config_path, epochs=epochs, project="runs", name="detect", exist_ok=True)
+    results = model.train(data=data_config_path, epochs=epochs, project="runs", name="detect", exist_ok=True,batch=32)
     # 加载训练所得的最佳模型权重
     best_weights_path = os.path.join("runs", "detect", "weights", "best.pt")
     if os.path.exists(best_weights_path):
