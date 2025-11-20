@@ -6,6 +6,8 @@ import torch.backends.cudnn as cudnn
 import numpy as np
 import torchvision
 from torchvision import datasets, models, transforms
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import time
 import os
@@ -14,7 +16,7 @@ from tempfile import TemporaryDirectory
 import copy
 
 cudnn.benchmark = True
-plt.ion()   # interactive mode
+plt.ioff()
 
 import os
 
@@ -233,7 +235,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs=25, patience=
     return model, history
 
 
-def plot_training_history(history):
+def plot_training_history(history,save_path="classifier"):
     """Plot training and validation accuracy/loss."""
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
 
@@ -256,7 +258,11 @@ def plot_training_history(history):
     ax2.grid(True)
 
     plt.tight_layout()
-    plt.show()
+
+    if save_path is not None:
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        plt.savefig(save_path)
+    plt.close(fig)
 
 
 def visualize_model(model, num_images=12):
@@ -382,7 +388,7 @@ model_ft, history_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_sch
                                     num_epochs=25, patience=5)
 
 # Plot training history
-plot_training_history(history_ft)
+plot_training_history(history_ft,save_path="classifier")
 
 # Visualize predictions
 visualize_model(model_ft, num_images=12)
@@ -421,7 +427,7 @@ model_densenet, history_densenet = train_model(model_densenet, criterion_dense, 
                                                  scheduler_densenet, num_epochs=25, patience=5)
 
 # Plot training history
-plot_training_history(history_densenet)
+plot_training_history(history_densenet,save_path="classifier")
 
 # Visualize predictions
 visualize_model(model_densenet, num_images=12)
@@ -472,7 +478,7 @@ model_efficientnet, history_efficientnet = train_model(model_efficientnet, crite
                                                         optimizer_efficientnet, scheduler_efficientnet,
                                                         num_epochs=25, patience=5)
 # Plot training history
-plot_training_history(history_efficientnet)
+plot_training_history(history_efficientnet,save_path="classifier")
 # Visualize predictions
 visualize_model(model_efficientnet, num_images=12)
 test_acc_efficientnet, preds_efficientnet, labels_efficientnet = evaluate_model(model_efficientnet, dataloaders['test'], 'Test')
