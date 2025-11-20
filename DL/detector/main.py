@@ -5,7 +5,7 @@ import torch
 from ultralytics import YOLO
 
 # 导入自定义模块
-from All.DL.detector.src import detection, dataset, classification
+from DL.detector.src import detection, dataset, classification
 
 # 配置：数据集路径和类别名称
 DATA_DIR = "../archive"  # 数据集根目录，包含 images/ 和 labels/ 子目录
